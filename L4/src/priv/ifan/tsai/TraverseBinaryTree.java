@@ -43,17 +43,30 @@ public class TraverseBinaryTree {
 	
 	// 先序遍历 非递归实现
 	private static void prevOrderTraverse(BinaryNode root) {
+//		if (root != null) {
+//			Stack<BinaryNode> stack = new Stack<BinaryNode>();
+//			stack.push(root);
+//			while (!stack.isEmpty()) {
+//				root = stack.pop();
+//				System.out.print(root.data + " ");
+//				if (root.right != null) {
+//					stack.push(root.right);
+//				}
+//				if (root.left != null) {
+//					stack.push(root.left);
+//				}
+//			}
+//		}
 		if (root != null) {
 			Stack<BinaryNode> stack = new Stack<BinaryNode>();
-			stack.push(root);
-			while (!stack.isEmpty()) {
-				root = stack.pop();
-				System.out.print(root.data + " ");
-				if (root.right != null) {
-					stack.push(root.right);
-				}
-				if (root.left != null) {
-					stack.push(root.left);
+			while (!stack.isEmpty() || root != null) {
+				if (root != null) {
+					stack.push(root);
+					System.out.print(root.data + " ");
+					root = root.left;
+				} else {
+					root = stack.pop();
+					root = root.right;
 				}
 			}
 		}
@@ -83,25 +96,31 @@ public class TraverseBinaryTree {
 	 *      最后执行完中右左的遍历后, 将辅助栈中的数依次pop, 次序就为中右左的逆序左右中, 即为后序遍历    
 	 */
 	// 后序遍历  非递归实现
-	private static void postOrderTraverse(BinaryNode root) {
+	private static void postOrderTraverse(BinaryNode root) {	
 		if (root != null) {
 			Stack<BinaryNode> stack = new Stack<BinaryNode>();
 			Stack<BinaryNode> helpStack = new Stack<BinaryNode>();
-			stack.add(root);
+			stack.push(root);
 			while (!stack.isEmpty()) {
 				root = stack.pop();
 				helpStack.push(root);
 				if (root.left != null) {
 					stack.push(root.left);
-				}
+				} 
 				if (root.right != null) {
 					stack.push(root.right);
 				}
 			}
+			
 			while (!helpStack.isEmpty()) {
 				System.out.print(helpStack.pop().data + " ");
 			}
+			
 		}
+		
+		
+		
+		
 	}
 
 	public static void main(String[] args) {
