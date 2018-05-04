@@ -45,6 +45,7 @@ public class WordOfBeginToEnd {
 //			}
 //			System.out.println();
 //		}
+		// 输出最短路径
 		System.out.println(res.size() == 0 ? 0 : res.get(0).size());
 		
 		
@@ -52,14 +53,18 @@ public class WordOfBeginToEnd {
 	
 	public static List<List<String>> getShortestPaths(String beginWord, 
 			String endWord, List<String> wordList) {
+		// 获取包括beginWord在内的wordList的各节点的邻接表
 		HashMap<String,List<String>> nexts = getNexts(wordList);
+		// bfs，获取各节点到beginWord的最短距离表 
 		HashMap<String, Integer> distances = getDistances(beginWord, nexts);
 		List<String> pathList = new ArrayList<>();
 		List<List<String>> res = new ArrayList<>();
+		// dfs，获取所有最短路径
 		getShortestPaths(beginWord, endWord, nexts, distances, pathList, res);
 		return res;
 	}
 	
+
 	public static void getShortestPaths(String cur, String end, 
 			HashMap<String, List<String>> nexts,
 			HashMap<String, Integer> distances, 
@@ -107,9 +112,12 @@ public class WordOfBeginToEnd {
 		return nextMap;
 	}
 
+	
 	public static List<String> getNext(String str, HashSet<String> wordSet) {
 		char[] chs = str.toCharArray();
 		List<String> res = new ArrayList<>();
+		// 这里的时间复杂度为O(26L), 其中L为单词长度
+		// 
 		for (int i = 0; i < chs.length; i++) {
 			for (char ch = 'a'; ch <= 'z'; ch++) {
 				if (ch != chs[i]) {
