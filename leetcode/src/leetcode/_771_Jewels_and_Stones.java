@@ -3,9 +3,9 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Jewels_and_Stones_771 {
+public class _771_Jewels_and_Stones {
 	 public static int numJewelsInStones(String J, String S) {
-	        Set<Character> set = new HashSet<>();
+	        Set<Character> set = new HashSet<Character>();
 	        for (int i = 0; i < J.length(); i++) {
 	        	set.add(J.charAt(i));
 	        }

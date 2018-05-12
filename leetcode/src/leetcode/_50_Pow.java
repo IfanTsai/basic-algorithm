@@ -1,6 +1,6 @@
 package leetcode;
 
-public class Pow_50 {
+public class _50_Pow {
 	public static double myPow(double x, int n) {
 		if (x == 1) {
 			return 1;

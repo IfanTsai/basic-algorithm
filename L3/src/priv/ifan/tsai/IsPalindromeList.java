@@ -114,7 +114,7 @@ public class IsPalindromeList {
 		// compare
 		boolean res = true;
 		slow = head;
-		while (slow != null && fast != null) {
+		while (fast != null) {
 			if (slow.data != fast.data) {
 				res = false;
 				break;
